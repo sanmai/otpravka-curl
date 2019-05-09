@@ -8,8 +8,8 @@ addons:
     - jq
 
 script:
- - clean-address
- - clean-phone
- - clean-physical
+ - ./clean-address
+ - ./clean-phone
+ - ./clean-physical
 
 
