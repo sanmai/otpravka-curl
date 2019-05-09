@@ -1,0 +1,15 @@
+---
+language: bash
+
+addons:
+  apt:
+    packages:
+    - poppler-utils
+    - jq
+
+script:
+ - clean-address
+ - clean-phone
+ - clean-physical
+
+
