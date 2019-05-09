@@ -1,0 +1,14 @@
+#!/bin/bash
+
+order=$(./user-backlog | jq '."result-ids"[0]')
+
+batch=$(echo "[$order]" | ./curl POST /1.0/user/shipment?sending-date=$(date +%Y-%m-%d) | jq '.batches[0]."batch-name" | tonumber')
+
+echo -n | ./curl POST /1.0/batch/$batch/checkin
+
+zip=$(tempfile -d . -p $(date +%Y%m%d)-$order- -s .zip)
+
+echo -n | ./curl GET /1.0/forms/$batch/zip-all > $zip
+
+du -bh $zip
+unzip -l $zip

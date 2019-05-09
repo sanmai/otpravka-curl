@@ -25,7 +25,7 @@ else
     filter=cat
 fi
 
-curl -s \
+curl -s --dump-header /dev/stderr \
 -H "X-User-Authorization: Basic $AUTH" \
 -H "Authorization: AccessToken $TKN" \
 -H "Content-Type: application/json;charset=UTF-8" \
