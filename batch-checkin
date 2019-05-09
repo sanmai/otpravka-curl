@@ -1,0 +1,5 @@
+#!/bin/bash
+
+batch=$(./user-shipment | jq '.batches[0]."batch-name" | tonumber')
+
+echo -n | ./curl POST /1.0/batch/$batch/checkin

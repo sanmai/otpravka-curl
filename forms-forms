@@ -1,0 +1,16 @@
+#!/bin/bash
+
+order=$(./user-backlog | jq '."result-ids"[0]')
+
+batch=$(echo "[$order]" | ./curl POST /1.0/user/shipment?sending-date=$(date +%Y-%m-%d) | jq '.batches[0]."batch-name" | tonumber')
+
+echo -n | ./curl POST /1.0/batch/$batch/checkin
+
+pdf=$(tempfile -d . -p $(date +%Y%m%d)-$order- -s .pdf)
+
+echo -n | ./curl GET "/1.0/forms/$order/forms?sending-date=$(date +%Y-%m-%d)&print-type=PAPER" > $pdf
+
+command -v pdfinfo > /dev/null || echo apt install poppler-utils
+
+du -bh $pdf
+pdfinfo $pdf
