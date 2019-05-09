@@ -1,11 +1,14 @@
 #!/bin/bash
 set -e -u
 
-test -f tkn.txt
-test -f auth.txt
+if [ -z $TKN -o -z $AUTH ]
+then
+    test -f tkn.txt
+    TKN="$(cat tkn.txt)"
+    test -f auth.txt
+    AUTH="$(cat auth.txt)"
+fi
 
-TKN="$(cat tkn.txt)"
-AUTH="$(cat auth.txt)"
 API=https://otpravka-api.pochta.ru
 
 data=$(</dev/stdin)
