@@ -10,7 +10,7 @@ API=https://otpravka-api.pochta.ru
 
 data=$(</dev/stdin)
 
-jq=$(command -v jq || command -v cat)
+jq=$(command -v jq || command -v json-tool || command -v cat)
 
 if [ -t 1 ]
 then
