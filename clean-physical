@@ -1,0 +1,14 @@
+#!/bin/bash
+
+./curl /1.0/clean/physical <<EOF
+[
+	{
+		"id": "fio 1",
+		"original-fio": "Иванов Иван Иванович"
+	},
+	{
+		"id": "fio 2",
+		"original-fio": "Иванов Николай Иванович"
+	}
+]
+EOF
