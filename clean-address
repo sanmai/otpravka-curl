@@ -1,0 +1,12 @@
+#!/bin/bash
+
+./curl /1.0/clean/address '[
+    {
+        "id": "foo",
+        "original-address": "г. Москва, Варшавское шоссе, 37"
+    },
+    {
+        "id": "bar",
+        "original-address": "г. Новосибирск, ул. Жуковского, 100/4"
+    }
+]'

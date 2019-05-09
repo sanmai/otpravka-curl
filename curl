@@ -1,0 +1,28 @@
+#!/bin/bash
+set -e
+
+test -f tkn.txt
+test -f auth.txt
+
+TKN="$(cat tkn.txt)"
+AUTH="$(cat auth.txt)"
+API=https://otpravka-api.pochta.ru
+
+if [ -t 1 ] ; then
+    filter=jq
+else
+    filter=cat
+fi
+
+
+curl -s \
+-H "X-User-Authorization: Basic $AUTH" \
+-H "Authorization: AccessToken $TKN" \
+-H "Content-Type: application/json;charset=UTF-8" \
+-H "Accept: application/json;charset=UTF-8" \
+--request POST \
+--data "$2" \
+$API$1 | $filter
+
+
+
