@@ -1,7 +1,7 @@
 #!/bin/bash
-set -e -u
+set -e
 
-if [ -z $TKN -o -z $AUTH ]
+if [ -z "$TKN" -o -z "$AUTH" ]
 then
     test -f tkn.txt
     TKN="$(cat tkn.txt)"
@@ -9,11 +9,13 @@ then
     AUTH="$(cat auth.txt)"
 fi
 
+set -u
+
 API=https://otpravka-api.pochta.ru
 
 data=$(</dev/stdin)
 
-jq=$(command -v jq || command -v json-tool || command -v cat)
+jq=$(command -v jq || command -v json_pp || command -v cat)
 
 verb=${1:-POST}
 target="$2"
@@ -35,4 +37,4 @@ curl -s --dump-header /dev/stderr \
 -H "Accept: application/json;charset=UTF-8" \
 --request $verb \
 --data "$data" \
-$API$target | $filter
+$API$target | python -mjson.tool | $filter
