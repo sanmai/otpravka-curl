@@ -1,0 +1,6 @@
+#!/bin/bash
+
+batch=$(./user-shipment | jq '.batches[0]."batch-name" | tonumber')
+
+./user-backlog | jq '."result-ids"' |
+./curl POST /1.0/batch/$batch/shipment

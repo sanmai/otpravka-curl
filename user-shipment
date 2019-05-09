@@ -1,0 +1,4 @@
+#!/bin/bash
+
+./user-backlog | jq '."result-ids"' |
+./curl POST /1.0/user/shipment
