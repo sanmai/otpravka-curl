@@ -1,0 +1,16 @@
+#!/bin/bash
+
+./curl /1.0/clean/phone <<EOF
+[
+	{
+		"id": "tel1",
+		"original-phone": "2-08-14",
+		"place": "Камышлов",
+		"region": "Свердловская область"
+	},
+	{
+		"id": "tel2",
+		"original-phone": "8-499-257-44-56"
+	}
+]
+EOF

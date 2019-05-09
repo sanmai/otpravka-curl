@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -e -u
 
 test -f tkn.txt
 test -f auth.txt
@@ -8,12 +8,19 @@ TKN="$(cat tkn.txt)"
 AUTH="$(cat auth.txt)"
 API=https://otpravka-api.pochta.ru
 
-if [ -t 1 ] ; then
-    filter=jq
+data=$(</dev/stdin)
+
+jq=$(command -v jq || command -v cat)
+
+if [ -t 1 ]
+then
+    filter=$jq
+    echo $data | $jq
+    echo "POST $1"
+	echo
 else
     filter=cat
 fi
-
 
 curl -s \
 -H "X-User-Authorization: Basic $AUTH" \
@@ -21,8 +28,5 @@ curl -s \
 -H "Content-Type: application/json;charset=UTF-8" \
 -H "Accept: application/json;charset=UTF-8" \
 --request POST \
---data "$2" \
+--data "$data" \
 $API$1 | $filter
-
-
-
