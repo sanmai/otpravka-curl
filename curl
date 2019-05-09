@@ -12,11 +12,14 @@ data=$(</dev/stdin)
 
 jq=$(command -v jq || command -v json-tool || command -v cat)
 
+verb=${1:-POST}
+target="$2"
+
 if [ -t 1 ]
 then
     filter=$jq
     echo $data | $jq
-    echo "POST $1"
+    echo "$verb $target"
 	echo
 else
     filter=cat
@@ -27,6 +30,6 @@ curl -s \
 -H "Authorization: AccessToken $TKN" \
 -H "Content-Type: application/json;charset=UTF-8" \
 -H "Accept: application/json;charset=UTF-8" \
---request POST \
+--request $verb \
 --data "$data" \
-$API$1 | $filter
+$API$target | $filter

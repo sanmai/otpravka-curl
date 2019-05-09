@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./curl /1.0/clean/physical <<EOF
+./curl POST /1.0/clean/physical <<EOF
 [
 	{
 		"id": "fio 1",
