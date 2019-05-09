@@ -1,0 +1,51 @@
+#!/bin/bash
+
+./curl PUT /1.0/user/backlog <<EOF
+[
+	{
+		"address-type-to": "DEFAULT",
+		"given-name": "Иван",
+		"house-to": "37",
+		"index-to": 117105,
+		"mail-category": "ORDINARY",
+		"mail-direct": 643,
+		"mail-type": "POSTAL_PARCEL",
+		"mass": 1000,
+		"middle-name": "Иванович",
+		"order-num": "001",
+		"place-to": "г Москва",
+		"postoffice-code": "109012",
+		"region-to": "г Москва",
+		"street-to": "ш Варшавское",
+		"surname": "Иванов",
+		"tel-address": 79459562067,
+		"transport-type": "SURFACE",
+		"dimension": {
+			"height": 3,
+			"length": 9,
+			"width": 73
+		},
+		"fragile": "true"
+	},
+	{
+		"address-type-to": "DEFAULT",
+		"given-name": "Сергей",
+		"house-to": "13",
+		"index-to": 630084,
+		"mail-category": "ORDINARY",
+		"mail-direct": 643,
+		"mail-type": "POSTAL_PARCEL",
+		"mass": 200000,
+		"middle-name": "Владимирович",
+		"order-num": "002",
+		"place-to": "г Новосибирск",
+		"postoffice-code": "109012",
+		"region-to": "обл Новосибирская",
+		"room-to": "99",
+		"street-to": "проезд Газовый",
+		"surname": "Сидоров",
+		"tel-address": 79458712076,
+		"transport-type": "SURFACE"
+	}
+]
+EOF
