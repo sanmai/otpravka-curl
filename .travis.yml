@@ -11,5 +11,10 @@ script:
  - ./clean-address
  - ./clean-phone
  - ./clean-physical
-
+ - ./user-backlog
+ - ./user-shipment
+ - ./batch-checkin
+ - ./batch-shipment
+ - ./forms-forms
+ - ./forms-zip-all
 
