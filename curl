@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-if [ -z "$TKN" -o -z "$AUTH" ]
+if [ -z "$TOKEN" -o -z "$AUTH" ]
 then
     test -f tkn.txt
-    TKN="$(cat tkn.txt)"
+    TOKEN="$(cat tkn.txt)"
     test -f auth.txt
     AUTH="$(cat auth.txt)"
 fi
@@ -32,7 +32,7 @@ fi
 
 curl -s --dump-header /dev/stderr \
 -H "X-User-Authorization: Basic $AUTH" \
--H "Authorization: AccessToken $TKN" \
+-H "Authorization: AccessToken $TOKEN" \
 -H "Content-Type: application/json;charset=UTF-8" \
 -H "Accept: application/json;charset=UTF-8" \
 --request $verb \
