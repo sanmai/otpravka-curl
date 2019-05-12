@@ -11,4 +11,6 @@ zip=$(tempfile -d . -p $(date +%Y%m%d)-$order- -s .zip)
 echo -n | ./curl GET /1.0/forms/$batch/zip-all > $zip
 
 du -bh $zip
+test -s $zip || rm $zip && exit 1
+
 unzip -l $zip

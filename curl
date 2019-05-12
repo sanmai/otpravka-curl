@@ -37,4 +37,4 @@ curl -s --dump-header /dev/stderr \
 -H "Accept: application/json;charset=UTF-8" \
 --request $verb \
 --data "$data" \
-$API$target | python -mjson.tool | $filter
+$API$target | $filter
