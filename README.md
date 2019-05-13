@@ -6,8 +6,8 @@
 
 ```bash
 curl \
-    -H 'X-User-Authorization: Basic $AUTH' \
-    -H 'Authorization: AccessToken $TOKEN' \
+    -H "X-User-Authorization: Basic $AUTH" \
+    -H "Authorization: AccessToken $TOKEN" \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'Accept: application/json;charset=UTF-8' \
     --request POST \
